@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You </title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff4d6d, #ff9a9e);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    z-index: 2;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    background: white;
+    color: #ff4d6d;
+    font-size: 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+#message {
+    display: none;
+    margin-top: 20px;
+    font-size: 22px;
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* ❤️ Falling Hearts */
+.heart {
+    position: absolute;
+    top: -10px;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Hey Shreya❤️</h1>
+    <p>I wanted to ask you something...</p>
+    <button onclick="showLove()">Click Me 💕</button>
+
+    <div id="message">
+        Can we go for coffee together? ☕🥺<br>
+        I’d really love to talk to you 😊💖<br>
+    </div>
+</div>
+
+
+<audio id="music" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
+
+<script>
+function showLove() {
+    document.getElementById("message").style.display = "block";
+    document.getElementById("music").play();
+}
+
+/* Create hearts */
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}, 300);
+</script>
+
+</body>
+</html>
